@@ -11,7 +11,7 @@ import { setDecodedData } from './reduxStore/actions';
 const Tab = createBottomTabNavigator();
 
 function QrList() {
-  const {dataList} = useSelector(state => state.dataReducer)
+  const {dataList} = useSelector(state => state.data)
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>list hhere</Text>
