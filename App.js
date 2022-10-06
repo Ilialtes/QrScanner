@@ -4,19 +4,27 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {FontAwesome5} from '@expo/vector-icons'
 import QrScanner from './screens/QrScanner';
+import { Provider, useSelector } from 'react-redux';
+import { Store } from './reduxStore/store';
+import { setDecodedData } from './reduxStore/actions';
+
 const Tab = createBottomTabNavigator();
 
 function QrList() {
+  const {dataList} = useSelector(state => state.dataReducer)
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Qr List!</Text>
+      <Text>list hhere</Text>
     </View>
   );
 }
 
 export default function App() {
+  
   return (
-    <NavigationContainer>
+    <Provider store={Store}>
+      
+      <NavigationContainer>
       <Tab.Navigator screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: [
@@ -51,6 +59,8 @@ export default function App() {
         }} />
       </Tab.Navigator>
     </NavigationContainer>
+    </Provider>
+    
   );
 }
 

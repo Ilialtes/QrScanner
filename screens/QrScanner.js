@@ -24,7 +24,7 @@ export default function QrScanner() {
 return(
         //dispach(setDecodedData(decodeURL))
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>this is meantimes</Text>
+        <Text>this is meantidddemessssssss</Text>
       </View>
 )
 }
