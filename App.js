@@ -3,15 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {FontAwesome5} from '@expo/vector-icons'
+import QrScanner from './screens/QrScanner';
 const Tab = createBottomTabNavigator();
-
-function QrScanner() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Qr Scanner!</Text>
-    </View>
-  );
-}
 
 function QrList() {
   return (
