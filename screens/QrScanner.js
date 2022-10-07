@@ -2,29 +2,29 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import { useDispatch } from 'react-redux';
+import { setDecodedData } from '../reduxStore/actions';
 
 export default function QrScanner() {
-    const [hasPermission, setHasPermission] = useState(null);
+   
     const [scanned, setScanned] = useState(false);
     const [text, setText] = useState('Not Scanned Yet')
-
-  const askForCameraPermmision = () =>{
-    (async () =>{
-        const { status } = await BarCodeScanner.requestPermissionsAsync();
-        setHasPermission(status == 'granted')
-    })()
-  }
-  useEffect(() => {
-    askForCameraPermmision();
-  }, []) 
-
-  /* const handleDataScanned = (type, data) => {
-
-  } */
+    const dispach = useDispatch();
+ 
+ const handleDataScanned = ({type, data}) => {
+    setScanned(true)
+    setText(data)
+    dispach(setDecodedData(data))
+    console.log('type' + type + '\nData' + data)
+  } 
+  
 return(
-        //dispach(setDecodedData(decodeURL))
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>this is meantidddemessssssss</Text>
+          <View style={styles.barcodeBox}>
+            <BarCodeScanner onBarCodeScanned={scanned ? undefined : handleDataScanned} style={{height:600, width:600}}/>
+          </View>
+          <Text style={styles.maintext}>{text}</Text>
+          {scanned && <Button title={'Scan Again'} onPress={() => setScanned(false)}></Button>}
       </View>
 )
 }
@@ -36,4 +36,17 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
+    barcodeBox: {
+      alignItems:'center',
+      justifyContent:'center',
+      height:300,
+      width:300,
+      overflow:'hidden',
+      borderRadius:30,
+      backgroundColor:'blue'
+    },
+    maintext: {
+      fontSize:16,
+      margin:20
+    }
   })

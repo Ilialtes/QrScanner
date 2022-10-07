@@ -6,12 +6,12 @@ import {FontAwesome5} from '@expo/vector-icons'
 import QrScanner from './screens/QrScanner';
 import { Provider, useSelector } from 'react-redux';
 import { Store } from './reduxStore/store';
-import { setDecodedData } from './reduxStore/actions';
 
 const Tab = createBottomTabNavigator();
 
 function QrList() {
   const {dataList} = useSelector(state => state.data)
+  console.warn(dataList)
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>list hhere</Text>
@@ -38,10 +38,8 @@ export default function App() {
           },
         ]
       }}>
-        {
-          //screens
-        }
         <Tab.Screen name="QrScanner" component={QrScanner} options={{
+          unmountOnBlur: true,
           tabBarIcon:({focused}) => (
             <View>
               <FontAwesome5 name="qrcode" size={25} color={focused ? 'blue' : 'gray'}>

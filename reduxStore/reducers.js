@@ -1,7 +1,7 @@
 import {SET_DECODED_DATA} from './actions'
 
 const initialState = {
-    dataList: []    
+    dataList: [],
 }
 function dataReducer(state = initialState, action) {
     switch(action.type){
