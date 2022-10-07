@@ -3,30 +3,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {FontAwesome5} from '@expo/vector-icons'
 import QrScanner from './screens/QrScanner';
+import QrList from './screens/QrList';
 import { Provider, useSelector } from 'react-redux';
 import { Store } from './reduxStore/store';
 import React, { useState } from 'react';
 
 const Tab = createBottomTabNavigator();
-
-function QrList() {
-  const [text, onChangeText] = useState("Useless Text");
-
-  const {dataList} = useSelector(state => state.data)
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        value={text}
-    />
-    <FlatList
-        data={dataList}
-        renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
-      /> 
-      </View>
-  );
-}
 
 export default function App() {
   
