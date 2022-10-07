@@ -15,7 +15,6 @@ export default function QrScanner() {
     setScanned(true)
     setText(data)
     dispach(setDecodedData(data))
-    console.log('type' + type + '\nData' + data)
   } 
   
 return(

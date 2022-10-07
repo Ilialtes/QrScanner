@@ -1,21 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View,FlatList,TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {FontAwesome5} from '@expo/vector-icons'
 import QrScanner from './screens/QrScanner';
 import { Provider, useSelector } from 'react-redux';
 import { Store } from './reduxStore/store';
+import React, { useState } from 'react';
 
 const Tab = createBottomTabNavigator();
 
 function QrList() {
+  const [text, onChangeText] = useState("Useless Text");
+
   const {dataList} = useSelector(state => state.data)
-  console.warn(dataList)
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>list hhere</Text>
-    </View>
+    <TextInput
+        style={styles.input}
+        onChangeText={onChangeText}
+        value={text}
+    />
+    <FlatList
+        data={dataList}
+        renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
+      /> 
+      </View>
   );
 }
 
@@ -68,5 +77,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
   },
 });
