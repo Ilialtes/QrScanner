@@ -1,12 +1,12 @@
-import { StyleSheet, Text, View,FlatList,TextInput } from 'react-native';
+import { View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {FontAwesome5} from '@expo/vector-icons'
 import QrScanner from './screens/QrScanner';
 import QrList from './screens/QrList';
-import { Provider, useSelector } from 'react-redux';
+import { Provider } from 'react-redux';
 import { Store } from './reduxStore/store';
-import React, { useState } from 'react';
+import React from 'react';
 
 const Tab = createBottomTabNavigator();
 
@@ -53,22 +53,4 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  item: {
-    padding: 10,
-    fontSize: 18,
-    height: 44,
-  },
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
-});
+

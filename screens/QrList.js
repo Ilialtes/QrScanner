@@ -3,16 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 export default function QrList() {
-
     const {dataList} = useSelector(state => state.data);
     const [filteredData, setFilteredData ] = useState([])
     const [search, setSearch] = useState('');
 
-
     useEffect(() => {
        setFilteredData(dataList)
      }, [dataList]);
-
 
      const searchFilter = (text) => {
         if(text){
@@ -21,7 +18,7 @@ export default function QrList() {
             const textData = text.toUpperCase();
             return itemData.indexOf(textData) > -1;
           });
-          setFilteredData(newData)
+          setFilteredData(newData);
           setSearch(text);
         } else {
             setFilteredData(dataList);
@@ -56,7 +53,6 @@ export default function QrList() {
 }
 
 const styles = StyleSheet.create({
-
     item: {
       padding: 10,
       fontSize: 18,
@@ -67,5 +63,6 @@ const styles = StyleSheet.create({
       margin: 12,
       borderWidth: 1,
       padding: 10,
+      width: "80%"
     },
   });

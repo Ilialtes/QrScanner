@@ -1,5 +1,4 @@
-//import { setDecodedData } from './reduxStore/actions'
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { useDispatch } from 'react-redux';
@@ -11,10 +10,10 @@ export default function QrScanner() {
     const [text, setText] = useState('Not Scanned Yet')
     const dispach = useDispatch();
  
- const handleDataScanned = ({type, data}) => {
-    setScanned(true)
-    setText(data)
-    dispach(setDecodedData(data))
+ const handleDataScanned = ({data}) => {
+    setScanned(true);
+    setText(data);
+    dispach(setDecodedData(data));
   } 
   
 return(
@@ -29,12 +28,6 @@ return(
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
     barcodeBox: {
       alignItems:'center',
       justifyContent:'center',
